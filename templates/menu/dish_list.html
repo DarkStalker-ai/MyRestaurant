@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Меню ресторану</h1>
+    <ul>
+        {% for dish in dishes %}
+            <li>
+                <a href="{% url 'dish_detail' dish.pk %}">{{ dish.name }}</a> — {{ dish.price }} грн
+            </li>
+        {% empty %}
+            <li>Страв поки немає.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
