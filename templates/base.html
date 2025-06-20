@@ -16,7 +16,7 @@
         </nav>
         {% if request.user.is_authenticated %}
             <a href="{% url 'logout' %}"><button class="section_button">Вийти</button></a>
-            <a href="{% url 'portfolio' %}"><button class="section_button">Профіль</button></a>
+            <a href="{% url 'profile' %}"><button class="section_button">Профіль</button></a>
         {% else %}
             <a href="{% url 'login' %}"><button class="section_button">Увійти</button></a>
             <a href="{% url 'register' %}"><button class="section_button">Зареєструватися</button></a>
