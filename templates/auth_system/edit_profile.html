@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<div class="">      
+    <form method="POST" action="{% url 'edit_portfolio' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="">
+            <label for="avatar">аватарка:</label>
+            <input type="file" id="image" name="image">
+        </div>
+
+        <div>
+            <label for="bio">біографія:</label>
+            <input type="text" id="bio" name="bio">
+        </div>
+
+        <button type="submit" class=""> зберегти зміни </button>
+    </form>
+</div>  
+{% endblock %}
