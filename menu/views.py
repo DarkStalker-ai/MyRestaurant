@@ -5,7 +5,7 @@ from .models import Dish, Category
 
 def menu(request):
     categories = Category.objects.all()
-    return render(request, '../templates/menu.html', {'categories': categories})
+    return render(request, 'menu/menu.html', {'categories': categories})
 
 def dish_list(request):
     if category_id:

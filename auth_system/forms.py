@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import UserProfile
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True, label='Електронна пошта')            
@@ -25,5 +25,5 @@ class RegistrationForm(UserCreationForm):
 
 class EditProfileForm(forms.ModelForm):
     class Meta:
-        model = Profile
+        model = UserProfile
         fields = ('avatar', 'bio')

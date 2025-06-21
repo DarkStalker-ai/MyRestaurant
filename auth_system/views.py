@@ -13,7 +13,7 @@ def login_view(request):
         if user:
             login(request, user)
 
-            return redirect('')
+            return redirect('menu')
         else:
             messages.error(request, "Неправильне ім'я користувача або пароль")
 
@@ -21,7 +21,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('')
+    return redirect('menu')
 
 def register_view(request):
     if request.method == "POST":
@@ -29,7 +29,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('')
+            return redirect('menu')
     else:
         form = RegistrationForm()
     return render(request, 'auth_system/register.html', {'form': form})
@@ -52,6 +52,6 @@ def edit_profile_view(request):
         if avatar:
             profile.avatar = avatar
         profile.save()
-        return redirect('portfolio')
+        return redirect('profile')
     else:
         return render(request, 'auth_system/edit_profile.html', {'profile': profile} )
