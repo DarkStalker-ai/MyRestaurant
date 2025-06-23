@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'menu',
     'auth_system',
-    
+    'basket',
 
 ]
 

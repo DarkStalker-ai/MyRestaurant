@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Ваш кошик</h1>
+    <ul>
+        {% for item in cart.values %}
+            <li>
+                {{ item.name }} - {{ item.price }} грн x {{ item.quantity }}
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Загальна вартість: {{ total }} грн</p>
+{% endblock %}
