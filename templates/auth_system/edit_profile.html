@@ -3,7 +3,7 @@
 {% load static %}
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <div class="">      
-    <form method="POST" action="{% url 'edit_portfolio' %}" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="">
             <label for="avatar">аватарка:</label>

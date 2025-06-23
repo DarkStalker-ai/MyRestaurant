@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
+from django.contrib import messages
 from django.contrib.auth.models import User
+from .models import UserProfile
 from .forms import RegistrationForm, EditProfileForm
 
 # Create your views here.
@@ -44,14 +46,14 @@ def profile_view(request):
     return render(request, 'auth_system/profile.html', context)
 
 def edit_profile_view(request):
-    profile = get_object_or_404(Profile, user=request.user)
+    profile, created = UserProfile.objects.get_or_create(user=request.user)
+
     if request.method == "POST":
-        avatar = request.FILES.get("image")
-        bio = request.POST.get("bio")
-        profile.bio = bio
-        if avatar:
-            profile.avatar = avatar
-        profile.save()
-        return redirect('profile')
+        form = EditProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
     else:
-        return render(request, 'auth_system/edit_profile.html', {'profile': profile} )
+        form = EditProfileForm(instance=profile)
+
+    return render(request, 'auth_system/edit_profile.html', {'form': form})
