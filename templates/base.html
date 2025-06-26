@@ -10,9 +10,9 @@
     <header>
         <title></title>
         <nav>
-            <a href=""></a>
-            <a href=""></a>
-            <a href=""></a>
+            <a href="{% url 'menu' %}"><button class="section_button">Головна</button></a>
+            <!--order--><a href="#"><button>Замовити</button></a>
+            <a href="{% url 'basket' %}"><button>Кошик</button></a>
         </nav>
         {% if request.user.is_authenticated %}
             <a href="{% url 'logout' %}"><button class="section_button">Вийти</button></a>
