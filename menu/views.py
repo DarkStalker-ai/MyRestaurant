@@ -1,25 +1,18 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Dish, Category
+from .models import Dish
 
 # Create your views here.
 
 def menu(request):
-    categories = Category.objects.all()
-    return render(request, 'menu/menu.html', {'categories': categories})
+    return render(request, 'menu/menu.html')
 
 def dish_list(request):
-    if category_id:
-        category = get_object_or_404(Category, pk=category_id)
-        dishes = Dish.objects.filter(category=category)
-    else:
-        dishes = Dish.objects.all()
-        category = None
+    dishes = Dish.objects.all()
 
-    categories = Category.objects.all()
+    
     return render(request, '../templates/menu/dish_list.html', {
         'dishes': dishes,
-        'categories': categories,
-        'current_category': category
+        
     })
 
 def dish_detail(request, pk):
