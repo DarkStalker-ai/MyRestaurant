@@ -11,7 +11,6 @@
         <title></title>
         <nav>
             <a href="{% url 'menu' %}"><button class="section_button">Головна</button></a>
-            <a href="{% url 'create_order' %}"><button>Замовити</button></a>
             <a href="{% url 'basket_detail' %}"><button>Кошик</button></a>
         </nav>
         {% if request.user.is_authenticated %}

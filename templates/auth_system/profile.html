@@ -1,8 +1,13 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 <div class="profile-info profile-forum-box">
-    <img src="{{ user.profile.avatar.url }}" alt="avatar" onerror="this.onerror=null; this.src='/static/img/default_avatar.png';" class="avatar">
+    {% if user.userprofile.avatar %}
+        <img src="{{ user.userprofile.avatar.url }}" alt="Avatar" class="profile" style="max-width: 300px;">
+    {% else %}
+        <img src="{% static 'img/default_avatar.jpg' %}" alt="Avatar" class="profile" style="max-width: 300px;">
+    {% endif %}
+    {{ user.userprofile.avatar.url }}
     <div class="profile-name-bio">
         <div class="sort box">
             <a>{{ user.username }} - </a>

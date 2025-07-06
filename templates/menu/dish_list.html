@@ -13,7 +13,7 @@
     <ul>
         {% for dish in dishes %}
             <li>
-                <a href="{% url 'dish_details' dish.id %}">{{ dish.name }}</a> — {{ dish.price }} грн
+                <a href="{% url 'dish_details' dish.pk %}">{{ dish.name }}</a> — {{ dish.price }} грн
             </li>
         {% empty %}
             <li>Страв поки немає.</li>

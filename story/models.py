@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .models import Dish
+from menu.models import Dish
 
 # Create your models here.
 
