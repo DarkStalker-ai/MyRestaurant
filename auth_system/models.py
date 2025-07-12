@@ -10,7 +10,7 @@ class UserProfile(models.Model):
         ('O', 'Інше'),
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, blank=True, null=True)
     avatar = models.ImageField(upload_to='profile/', default='static/img/default_avatar.jpg', blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
 

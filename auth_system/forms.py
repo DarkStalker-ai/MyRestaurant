@@ -18,25 +18,7 @@ class RegistrationForm(UserCreationForm):
         labels = {
             'username': "Ім'я користувача",
         }
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        gender = self.cleaned_data['gender']
-
-        if gender == 'M':
-            avatar_path = 'static/img/default_avatar.jpg'
-        elif gender == 'F':
-            avatar_path = 'static/img/default_avatar.jpg'
-        else:
-            avatar_path = 'static/img/default_avatar.jpg'
-        
-        profile = UserProfile(
-            user=user,
-            gender=gender,
-            avatar=avatar_path)
-        if commit:
-            profile.save()
-        
-        return user
+    
 
     # Ця штука переводить текст форми і забирає підказки так шо не трогайте
     def __init__(self, *args, **kwargs):

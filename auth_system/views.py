@@ -24,11 +24,27 @@ def logout_view(request):
     logout(request)
     return redirect('menu')
 
-def register_view(request):
+def register_view(request,):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
+        gender = request.POST.get('id_gender')
+
+        user = form.save()
+
+        if gender == 'M':
+            avatar_path = 'static/img/default_avatar.jpg'
+        elif gender == 'F':
+            avatar_path = 'static/img/default_avatar.jpg'
+        else:
+            avatar_path = 'static/img/default_avatar.jpg'
+        
+        profile = UserProfile(
+            user=user,
+            gender=gender,
+            avatar=avatar_path)
+        profile.save()
+
         if form.is_valid():
-            user = form.save()
             login(request, user)
             return redirect('menu')
     else:
