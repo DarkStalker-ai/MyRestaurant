@@ -3,11 +3,12 @@
 {% block content %}
     <h1>Ваш кошик</h1>
     <ul>
-        {% for item in cart.values %}
+        {% for item in basket.values %}
             <li>
                 {{ item.name }} - {{ item.price }} грн x {{ item.quantity }}
             </li>
         {% endfor %}
     </ul>
-    <p>Загальна вартість: {{ total }} грн</p>
+    <p>Загальна вартість: {{ total_price }} грн</p>
+    <a href="{% url 'create_order_from_basket' %}"><button>Оформити замовлення</button></a>
 {% endblock %}

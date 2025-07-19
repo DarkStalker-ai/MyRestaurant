@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Order #{{ order.id }}</h1>
+    <h1>Order #{{ order_id }}</h1>
     <ul>
         {% for item in order.items.all %}
             <li>{{ item.dish.name }} - {{ item.quantity }} x {{ item.price }} грн</li>
         {% endfor %}
     </ul>
-    <p>Total: {{ order.items.all|sum_price }} грн</p>
-    <a href="{% url 'complete_order' order.id %}">Complete Order</a>
+    <p>Total: {{ order.items.all|total_price }} грн</p>
+    <a href="{% url 'complete_order' order_id %}">Complete Order</a>
 {% endblock %}
