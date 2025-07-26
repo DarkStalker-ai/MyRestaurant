@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Оформлення замовлення { order.id }</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for item in order.items.all %}
+            <li>{{ item.dish.name }} - {{ item.quantity }} x {{ item.price }} грн</li>
+        {% endfor %}
+        {{ form.as_p }}
+        <p>Загальна вартість: {{ total_price }} грн</p>
+        
+        <a href="{% url 'complete_order' order.pk %}"></a><button type="submit">Підтвердити замовлення</button></a>
+    </form>
+{% endblock %}
