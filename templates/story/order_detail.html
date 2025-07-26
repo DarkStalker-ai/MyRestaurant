@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Замовлення #{{ order.id }}</h1>
+    <ul>
+        {% for item in order.items.all %}
+            <li>{{ item.dish.name }} - {{ item.quantity }} x {{ item.price }} грн</li>
+        {% endfor %}
+    </ul>
+    <p>Загальна вартість: {{ total_price }} грн</p>
+{% endblock %}
