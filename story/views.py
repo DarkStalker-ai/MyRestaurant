@@ -44,11 +44,6 @@ def create_order_from_basket(request):
 #     return redirect('order_detail', order_id=order.id)
 
 @login_required
-def order_detail(request, order_id):
-    order = get_object_or_404(Order, pk=order_id, user=request.user)
-    return render(request, 'story/order_detail.html', {'order': order})
-
-@login_required
 def complete_order(request, pk):
     order = Order.objects.get(pk=pk, user=request.user)
     order.is_completed = True
