@@ -110,7 +110,7 @@ nav {
 }
 
 main {
-  padding: 20px;
+  padding: 30px;
 }
 
 footer {
@@ -170,51 +170,34 @@ a:hover {
   text-decoration: none;
 }
 
-/* Стилі для блоку з популярними стравами */
-aside {
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 15px;
-  margin: 20px;
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
-aside h2 {
-  text-align: center;
-  color: #444;
-  margin-bottom: 20px;
-}
-
-.row {
+.carousel {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  transition: transform 0.5s ease-in-out;
+  gap: 32px;
+  padding: 25px;
 }
 
-/* Стилі для карток */
 .card {
+  flex: 0 0 auto;
+  width: 412px;
   background: linear-gradient(145deg, #ffffff, #e6e6e6);
   border: none;
   border-radius: 15px;
   box-shadow: 8px 8px 15px #b3b3b3, -8px -8px 15px #ffffff;
   transition: all 0.3s ease;
-  width: 200px;
-  margin-bottom: 20px;
   padding: 10px;
 }
 
-/* Ефект при наведенні на картку */
 .card:hover {
-  box-shadow: 12px 12px 20px #b3b3b3, -12px -12px 20px #ffffff;
-  transform: translateY(-5px);
+  box-shadow: inset 3px 3px 6px #b3b3b3, inset -3px -3px 6px #ffffff;
 }
 
-/* Ефект при натисканні на картку */
-.card:active {
-  box-shadow: inset 5px 5px 10px #b3b3b3, inset -5px -5px 10px #ffffff;
-}
-
-/* Стилі для зображення в картці */
 .card-img-top {
   border-radius: 10px;
   width: 100%;
@@ -222,23 +205,19 @@ aside h2 {
   object-fit: cover;
 }
 
-/* Стилі для тіла картки */
 .card-body {
   padding: 15px;
   text-align: center;
 }
 
-/* Стилі для заголовка картки */
 .card-title {
   color: #444;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* Стилі для тексту картки */
 .card-text {
   color: #666;
   font-size: 14px;
   margin-bottom: 10px;
 }
-

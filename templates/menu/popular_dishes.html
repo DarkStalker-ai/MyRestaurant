@@ -2,18 +2,18 @@
 
 {% block content %}
     <h2>Популярні страви</h2>
-        <div class="row">
+    <div class="carousel-container">
+        <div class="carousel">
             {% for dish in popular_dishes %}
-                <div class="col-md-2">
-                    <div class="card">
-                        <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ dish.name }}</h5>
-                            <p class="card-text">{{ dish.description }}</p>
-                            <a href="{% url 'dish_details' dish.id %}"><button>Детальніше</button></a>
-                        </div>
-                    </div>
+            <div class="card">
+                <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}"/>
+                <div class="card-body">
+                    <h5 class="card-title">{{ dish.name }}</h5>
+                    <p class="card-text">{{ dish.description }}</p>
+                    <a href="{% url 'dish_details' dish.id %}" style=""><button>Детальніше</button></a>
                 </div>
+            </div>
             {% endfor %}
         </div>
+    </div>
 {% endblock %}
