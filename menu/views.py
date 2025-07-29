@@ -23,3 +23,7 @@ def dish_list_by_category(request, category):
     dishes = Dish.objects.filter(category=category, available=True)
     category_name = dict(Dish.CATEGORIES_CHOICES).get(category, "Unknown Category")
     return render(request, 'menu/dish_list_by_category.html', {'dishes': dishes, 'category': category_name})
+
+def popular_dishes(request):
+    popular_dishes = Dish.get_popular_dishes()
+    return render(request, '../templates/base.html', {'popular_dishes': popular_dishes})

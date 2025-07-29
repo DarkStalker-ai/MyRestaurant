@@ -61,12 +61,18 @@ body {
 .category-links a:hover,
 .category-links a:active {
   box-shadow: inset 3px 3px 6px #b3b3b3, inset -3px -3px 6px #ffffff;
+  background: linear-gradient(
+    145deg,
+    #e6e6e6,
+    #ffffff
+  ); /* Зміна градієнту фону при наведенні */
+  background-position: right center;
 }
 
 button {
   padding: 10px 20px;
   background-color: #007bff;
-  color: white;
+  color: #000;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -76,13 +82,17 @@ button {
   box-shadow: 5px 5px 10px #b3b3b3, -5px -5px 10px #ffffff;
 }
 
-button:active {
+button:hover {
   box-shadow: inset 5px 5px 10px #b3b3b3, inset -5px -5px 10px #ffffff;
 }
 
 button a {
   color: #333;
   text-decoration: none;
+}
+
+button a:hover {
+  color: #000;
 }
 
 header {
@@ -157,4 +167,78 @@ a {
 
 a:hover {
   color: #004499;
+  text-decoration: none;
 }
+
+/* Стилі для блоку з популярними стравами */
+aside {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 15px;
+  margin: 20px;
+}
+
+aside h2 {
+  text-align: center;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Стилі для карток */
+.card {
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 8px 8px 15px #b3b3b3, -8px -8px 15px #ffffff;
+  transition: all 0.3s ease;
+  width: 200px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+/* Ефект при наведенні на картку */
+.card:hover {
+  box-shadow: 12px 12px 20px #b3b3b3, -12px -12px 20px #ffffff;
+  transform: translateY(-5px);
+}
+
+/* Ефект при натисканні на картку */
+.card:active {
+  box-shadow: inset 5px 5px 10px #b3b3b3, inset -5px -5px 10px #ffffff;
+}
+
+/* Стилі для зображення в картці */
+.card-img-top {
+  border-radius: 10px;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* Стилі для тіла картки */
+.card-body {
+  padding: 15px;
+  text-align: center;
+}
+
+/* Стилі для заголовка картки */
+.card-title {
+  color: #444;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Стилі для тексту картки */
+.card-text {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+

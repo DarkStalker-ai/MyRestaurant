@@ -18,6 +18,11 @@ class Dish(models.Model):
     # )
     available = models.BooleanField(default=True)
     image = models.ImageField(upload_to='dishes/', blank=True, null=True)
+    is_popular = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
+    
+    @classmethod
+    def get_popular_dishes(cls):
+        return cls.objects.filter(is_popular=True, available=True).order_by('-id')[:5]

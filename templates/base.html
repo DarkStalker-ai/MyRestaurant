@@ -5,21 +5,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <header>
         <title></title>
         <nav>
-            <button class="section_button"><a href="{% url 'menu' %}">Головна</a></button>
-            <button><a href="{% url 'basket_detail' %}">Кошик</a></button>
-            <button><a href="{% url 'order_story' %}">Історія</a></button>
+            <a href="{% url 'menu' %}"><button class="section_button">Головна</button></a>
+            <a href="{% url 'basket_detail' %}"><button>Кошик</button></a>
+            <a href="{% url 'order_story' %}"><button>Історія</button></a>
             
             {% if request.user.is_authenticated %}
-                <button class="section_button"><a href="{% url 'profile' %}">Профіль</a></button>
-                <button class="section_button"><a href="{% url 'logout' %}">Вийти</a></button>
+                <a href="{% url 'profile' %}"><button class="section_button">Профіль</button></a>
+                <a href="{% url 'logout' %}"></a><button class="section_button">Вийти</button></a>
             {% else %}
-                <button class="section_button"><a href="{% url 'login' %}">Увійти</a></button>
-                <button class="section_button"><a href="{% url 'register' %}">Зареєструватися</a></button>
+                <a href="{% url 'login' %}"><button class="section_button">Увійти</button></a>
+                <a href="{% url 'register' %}"><button class="section_button">Зареєструватися</button></a>
             {% endif %}
         </nav>
 
@@ -31,6 +32,24 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <aside>
+        <h2>Популярні страви</h2>
+        <div class="row">
+            {% for dish in popular_dishes %}
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ dish.name }}</h5>
+                            <p class="card-text">{{ dish.description }}</p>
+                            <a href="{% url 'dish_details' dish.id %}"><button>Детальніше</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </aside>
 
     <footer>
         <p>© 2023 My Website</p>
