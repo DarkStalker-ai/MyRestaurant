@@ -16,6 +16,7 @@ class Dish(models.Model):
     # resturant = models.ForeignKey(
     #     'restaurants.Restaurant', on_delete=models.CASCADE, related_name='dishes'
     # )
+    available = models.BooleanField(default=True)
     image = models.ImageField(upload_to='dishes/', blank=True, null=True)
 
     def __str__(self):

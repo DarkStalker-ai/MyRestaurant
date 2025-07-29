@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Страви в категорії: {{ category }}</h1>
+    <ul>
+        {% for dish in dishes %}
+            <li>
+                <a href="{% url 'dish_details' dish.id %}">
+                    <h3>{{ dish.name }}</h3>
+                </a>
+                <p>{{ dish.description }}</p>
+                <p>Ціна: {{ dish.price }} грн</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
