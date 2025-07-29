@@ -10,5 +10,6 @@
         {% endfor %}
     </ul>
     <p>Загальна вартість: {{ total_price }} грн</p>
-    <a href="{% url 'create_order_from_basket' %}"><button>Оформити замовлення</button></a>
+    <button><a href="{% url 'dish_list' %}">Повернутися до меню</a></button>
+    <button><a href="{% url 'create_order_from_basket' %}">Оформити замовлення</a></button>
 {% endblock %}

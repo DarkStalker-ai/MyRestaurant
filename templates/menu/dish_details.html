@@ -8,6 +8,6 @@
     <p><strong>Опис:</strong> {{ dish.description }}</p>
     <p><strong>Калорійність:</strong> {{ dish.calories }} ккал</p>
     <p><strong>Ціна:</strong> {{ dish.price }} грн</p>
-    <a href="{% url 'add_to_basket' dish.id %}"><button>Додати до кошика</button></a>
-    <a href="{% url 'dish_list' %}"><button>Назад</button></a>
+    <button><a href="{% url 'add_to_basket' dish.id %}">Додати до кошика</a></button>
+    <button><a href="{% url 'dish_list' %}">Назад</a></button>
 {% endblock %}
