@@ -1,13 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Ласкаво просимо до нашого ресторану</h1>
-    <p>Ми пропонуємо широкий вибір страв, які задовольнять будь-який смак. Оберіть категорію, щоб почати:</p>
+
+    <h1>Меню ресторану</h1>
 
     <div class="category-links">
-        <a href="{% url 'dish_list' %}">Усі страви</a>
+        <a href="{% url 'menu' %}">Усі страви</a>
         {% for category in categories %}
-            <a href="{% url 'dish_list_by_category' category.id %}">{{ category.name }}</a>
+            <a href="{% url 'dish_list_by_category' category.0 %}">{{ category.1 }}</a>
         {% endfor %}
     </div>
+
+    <ul>
+        {% for dish in dishes %}
+            <li>
+                <a href="{% url 'dish_details' dish.pk %}">{{ dish.name }}</a> — {{ dish.price }} грн
+            </li>
+        {% empty %}
+            <li>Страв поки немає.</li>
+        {% endfor %}
+    </ul>
+    <button><a href="{% url 'popular_dishes' %}">Назад</a></button>
 {% endblock %}

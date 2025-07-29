@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Популярні страви</h2>
+        <div class="row">
+            {% for dish in popular_dishes %}
+                <div class="col-md-2">
+                    <div class="card">
+                        <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ dish.name }}</h5>
+                            <p class="card-text">{{ dish.description }}</p>
+                            <a href="{% url 'dish_details' dish.id %}"><button>Детальніше</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}

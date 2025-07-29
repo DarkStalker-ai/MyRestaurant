@@ -8,5 +8,5 @@
     <p><strong>Опис:</strong> {{ dish.description }}</p>
     <p><strong>Ціна:</strong> {{ dish.price }} грн</p>
     <button><a href="{% url 'add_to_basket' dish.id %}">Додати до кошика</a></button>
-    <button><a href="{% url 'dish_list' %}">Назад</a></button>
+    <button><a href="{% url 'menu' %}">Назад</a></button>
 {% endblock %}

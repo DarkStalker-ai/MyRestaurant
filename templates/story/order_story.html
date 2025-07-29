@@ -4,7 +4,7 @@
     <h1>Історія замовлень</h1>
     <ul>
         {% for order in orders %}
-            <li><a href="{% url 'order_detail' order.id %}">Замовлення #{{ order.id }}</a> - {{ order.created_at }}</li>
+            <li><a href="{% url 'order_detail' order.id %}">Замовлення №{{ order.id }}</a> - {{ order.created_at }}</li>
         {% endfor %}
     </ul>
 {% endblock %}

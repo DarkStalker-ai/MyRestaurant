@@ -4,20 +4,17 @@ from .models import Dish
 # Create your views here.
 
 def menu(request):
-    return render(request, 'menu/menu.html')
-
-def dish_list(request):
     dishes = Dish.objects.all()
     categories = Dish.CATEGORIES_CHOICES
     
-    return render(request, '../templates/menu/dish_list.html', {
+    return render(request, 'menu/menu.html', {
         'dishes': dishes,
         'categories': categories
     })
 
 def dish_detail(request, pk):
     dish = get_object_or_404(Dish, pk=pk)
-    return render(request, '../templates/menu/dish_details.html', {'dish': dish})
+    return render(request, 'menu/dish_details.html', {'dish': dish})
 
 def dish_list_by_category(request, category):
     dishes = Dish.objects.filter(category=category, available=True)
@@ -26,4 +23,4 @@ def dish_list_by_category(request, category):
 
 def popular_dishes(request):
     popular_dishes = Dish.get_popular_dishes()
-    return render(request, '../templates/base.html', {'popular_dishes': popular_dishes})
+    return render(request, 'menu/popular_dishes.html', {'popular_dishes': popular_dishes})
