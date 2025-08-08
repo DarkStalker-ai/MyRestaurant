@@ -52,8 +52,10 @@ def register_view(request,):
     return render(request, 'auth_system/register.html', {'form': form})
 
 def profile_view(request):
+    my_reviews = request.user.review_set.all().order_by('-created_at')
     avatar = 'profile/default_avatar.png'
     context = {
+        'my_reviews': my_reviews,
         'photo': avatar,
         'user': request.user,
     }

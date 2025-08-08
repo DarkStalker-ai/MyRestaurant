@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'menu',
     'auth_system',
     'basket',
+    'reviews',
     'story',
 ]
 

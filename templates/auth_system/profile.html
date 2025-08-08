@@ -8,13 +8,27 @@
         <img src="{% static 'img/default_avatar.jpg' %}" alt="Avatar" class="profile" style="max-width: 300px;">
     {% endif %}
     {{ user.userprofile.avatar.url }}
-    <div class="profile-name-bio">
+    <div class="profile-name-bio" style="margin-left: 20px;">
         <div class="sort box">
-            <a>{{ user.username }} - </a>
+            <a>{{ user.username }}</a>
             <a>{{ user.email }}</a>
         </div>
         <p class="box">{{ user.profile.bio }}</p>
     </div>
-    <button><a href="{% url 'edit_profile' %}">Edit</a></button>
+    <a href="{% url 'edit_profile' %}"><button>Edit</button></a>
 </div>
+<div class="container-list">
+    <h2>Мої відгуки</h2>
+    {% if my_reviews %}
+        <p>Кількість відгуків: {{ my_reviews.count }}</p>
+    {% else %}
+        <p>У вас немає відгуків.</p>
+    {% endif %}
+    {% for review in my_reviews %}
+        <div class="profile-forum-box">
+            <p>{{ review.comment }}</p>
+            <p>Дата: {{ review.created_at }}</p>
+        </div>
+    {% endfor %}
+    </div> 
 {% endblock %}

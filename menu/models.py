@@ -23,6 +23,22 @@ class Dish(models.Model):
     def __str__(self):
         return self.name
     
+    def update_popularity(self):
+        reviews = self.reviews.all()
+
+        average_rating = reviews.aggregate(models.Avg('rating'))['rating__avg'] or 0
+
+        review_count = reviews.count()
+        popularity_threshold = 4.0
+        min_reviews = 5
+
+        if average_rating >= popularity_threshold and review_count >= min_reviews:
+            self.is_popular = True
+        else:
+            self.is_popular = False
+
+        self.save()
+    
     @classmethod
     def get_popular_dishes(cls):
         return cls.objects.filter(is_popular=True, available=True).order_by('-id')[:5]

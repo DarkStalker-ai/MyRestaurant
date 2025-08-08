@@ -14,7 +14,8 @@ def menu(request):
 
 def dish_detail(request, pk):
     dish = get_object_or_404(Dish, pk=pk)
-    return render(request, 'menu/dish_details.html', {'dish': dish})
+    reviews = dish.reviews.all().order_by('-created_at')
+    return render(request, 'menu/dish_details.html', {'dish': dish, 'reviews': reviews})
 
 def dish_list_by_category(request, category):
     dishes = Dish.objects.filter(category=category, available=True)

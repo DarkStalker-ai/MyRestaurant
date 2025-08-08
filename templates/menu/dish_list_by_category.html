@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Страви в категорії: {{ category }}</h1>
-    <ul>
+    <ul style="margin-bottom: 20px;">
         {% for dish in dishes %}
             <li>
                 <a href="{% url 'dish_details' dish.id %}">
@@ -13,4 +13,8 @@
             </li>
         {% endfor %}
     </ul>
+    <a href="{% url 'menu' %}"><button>Назад до меню</button></a>
+    {% if not dishes %}
+        <p>У цій категорії немає доступних страв.</p>
+    {% endif %}
 {% endblock %}

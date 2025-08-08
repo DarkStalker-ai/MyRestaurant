@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="dish-details">
     <h1>{{ dish.name }}</h1>
     {% if dish.image %}
         <img src="{{ dish.image.url }}" alt="{{ dish.name }}" style="max-width:300px;">
@@ -9,4 +10,30 @@
     <p><strong>Ціна:</strong> {{ dish.price }} грн</p>
     <button><a href="{% url 'add_to_basket' dish.id %}">Додати до кошика</a></button>
     <button><a href="{% url 'menu' %}">Назад</a></button>
+</div>
+<div class="reviews">
+    <h2>Відгуки</h2>
+    {% if reviews %}
+        <a href="{% url 'view_reviews' dish.id %}"><button>Переглянути всі відгуки</button></a>
+        <!-- {% for review in reviews %}
+            <div class="review">
+                <p><strong>Рейтинг:</strong> {{ review.rating }}</p>
+                <p>{{ review.comment }}</p>
+                <p><strong>Автор:</strong> {{ review.user.username }}</p>
+                {% if user.is_staff %}
+                    <form method="post" action="{% url 'delete_review' review.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Видалити</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %} -->
+    {% else %}
+        <p>Поки що немає відгуків для цієї страви.</p>
+    {% endif %}
+</div>
+
+<div class="add-review" style="margin-top: 20px;">
+    <a href="{% url 'add_review' dish.id %}"><button>Додати відгук</button></a>
+</div>
 {% endblock %}

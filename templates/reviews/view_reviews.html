@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Відгуки для {{ dish.name }}</h1>
+{% for review in reviews %}
+    <div>
+        <p>Рейтинг: {{ review.rating }}</p>
+        <p>{{ review.comment }}</p>
+        <p>Автор: {{ review.user.username }}</p>
+        {% if user.is_staff %}
+            <form method="post" action="{% url 'delete_review' review.id %}">
+                {% csrf_token %}
+                <a href="{% url 'delete_review' dish.id %}"><button type="submit">Видалити</button></a>
+            </form>
+        {% endif %}
+    </div>
+{% endfor %}
+{% if not reviews %}
+    <p>Поки що немає відгуків для цієї страви.</p>
+{% endif %}
+    <button><a href="{% url 'dish_details' dish.id %}">Назад</a></button>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Оформлення замовлення { order.id }</h1>
+    <h1>Оформлення замовлення {{ order.id }}</h1>
     <form method="post">
         {% csrf_token %}
         {% for item in order.items.all %}
